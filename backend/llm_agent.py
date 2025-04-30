@@ -6,13 +6,13 @@ import time
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from huggingface_hub import login
 import os
-from huggingface_hub import login
+
 token = os.getenv("HUGGINGFACE_TOKEN")
 if not token:
     raise ValueError("HUGGINGFACE_TOKEN is not set in environment variables.")
 
 login(token)
-MODEL_NAME = "microsoft/phi-2" 
+MODEL_NAME = "tiiuae/falcon-rw-1b" 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s"

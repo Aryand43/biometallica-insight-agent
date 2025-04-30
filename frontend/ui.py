@@ -43,7 +43,7 @@ def main_ui():
                     st.markdown("Generating report... Please wait.") 
 
                     start_time = time.time()
-                    with st.spinner("Running DeepSeek..."):
+                    with st.spinner("Running Model..."):
                         try:
                             report = generate_insight_report(extracted_text)
                             duration = time.time() - start_time
