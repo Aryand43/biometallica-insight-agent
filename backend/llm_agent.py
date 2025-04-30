@@ -70,17 +70,22 @@ def chunk_text_by_tokens(text, max_tokens=1000, buffer_tokens=50):
 
     return chunks
 
-
 def clean_generated_output(generated_text, prompt):
     cleaned = generated_text.replace(prompt, "").strip()
     cleaned = re.sub(r'^.*?---\s*', '', cleaned, flags=re.DOTALL)
     return cleaned.strip()
 
-
 def safe_generate(pipe, prompt, retries=2):
     for attempt in range(retries):
         try:
-            return pipe(prompt, max_new_tokens=512, temperature=0.7, do_sample=True)[0]["generated_text"]
+            return pipe(
+                prompt,
+                max_new_tokens=256,               
+                temperature=0.7,
+                do_sample=True,
+                pad_token_id=50256,             
+                eos_token_id=50256                
+            )[0]["generated_text"]
         except Exception as e:
             logging.warning(f"Retry {attempt+1}/{retries} failed: {e}")
             time.sleep(1)
