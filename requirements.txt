@@ -1,0 +1,9 @@
+streamlit
+transformers
+huggingface_hub
+torch
+pytesseract
+Pillow
+PyMuPDF
+tiktoken
+python-dotenv
