@@ -7,3 +7,4 @@ Pillow
 PyMuPDF
 tiktoken
 python-dotenv
+accelerate   
