@@ -5,9 +5,13 @@ import streamlit as st
 import time
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 from huggingface_hub import login
-load_dotenv()
-login(os.getenv("HUGGINGFACE_TOKEN"))
+import os
+from huggingface_hub import login
+token = os.getenv("HUGGINGFACE_TOKEN")
+if not token:
+    raise ValueError("HUGGINGFACE_TOKEN is not set in environment variables.")
 
+login(token)
 MODEL_NAME = "microsoft/phi-2" 
 logging.basicConfig(
     level=logging.INFO,
